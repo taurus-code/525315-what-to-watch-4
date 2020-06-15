@@ -4,12 +4,19 @@ import App from "./components/app/app.jsx";
 
 const init = () => {
   const dataPromo = {
-    titlePromo: `The Grand Budapest Hotel`,
-    genrePromo: `Drama`,
-    releaseDatePromo: `2014`
+    title: `The Grand Budapest Hotel`,
+    genre: `Drama`,
+    releaseDate: `2014`
   };
 
-  ReactDOM.render(<App titlePromo={dataPromo.titlePromo} genrePromo={dataPromo.genrePromo} releaseDatePromo={dataPromo.releaseDatePromo}/>, document.querySelector(`#root`));
+  const titleMovies = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
+
+  ReactDOM.render(
+      <App
+        promo = {dataPromo}
+        titleMovies = {titleMovies}
+      />,
+      document.querySelector(`#root`));
 };
 
 init();
