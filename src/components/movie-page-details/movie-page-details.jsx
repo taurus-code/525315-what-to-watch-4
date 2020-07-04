@@ -6,13 +6,50 @@ class CardMovieDetails extends PureComponent {
     super(props);
   }
 
+  _checkRatingScore(score) {
+    let level = null;
+
+    switch (true) {
+      case (score < 3):
+        level = `Bad`;
+        break;
+
+      case (score < 5):
+        level = `Normal`;
+        break;
+
+      case (score < 8):
+        level = `Not Bad`;
+        break;
+
+      case (score < 10):
+        level = `Very Good`;
+        break;
+
+      case (score >= 10):
+        level = `Awesome`;
+        break;
+
+      default:
+        level = `Not Rating`;
+        break;
+    }
+
+    return level;
+  }
+
   render() {
+    const {movie} = this.props;
+    const {background, title, genre, year, rating, descriptions, directors, starrings, poster, addressPage} = movie;
+
+    const newStarrings = starrings.slice(0, 6).join(`, `);
+
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
             <div className="movie-card__bg">
-              <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+              <img src={background.src} alt={background.alt} />
             </div>
 
             <h1 className="visually-hidden">WTW</h1>
@@ -35,10 +72,10 @@ class CardMovieDetails extends PureComponent {
 
             <div className="movie-card__wrap">
               <div className="movie-card__desc">
-                <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+                <h2 className="movie-card__title">{title}</h2>
                 <p className="movie-card__meta">
-                  <span className="movie-card__genre">Drama</span>
-                  <span className="movie-card__year">2014</span>
+                  <span className="movie-card__genre">{genre}</span>
+                  <span className="movie-card__year">{year}</span>
                 </p>
 
                 <div className="movie-card__buttons">
@@ -49,8 +86,8 @@ class CardMovieDetails extends PureComponent {
                     <span>Play</span>
                   </button>
                   <button className="btn btn--list movie-card__button" type="button">
-                    <svg viewBox="0 0 19 20" width="19" height="20">
-                      <use xlinkHref="#add"/>
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
                     </svg>
                     <span>My list</span>
                   </button>
@@ -63,16 +100,16 @@ class CardMovieDetails extends PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <div className="movie-card__poster movie-card__poster--big">
-                <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+                <img src={poster.src} alt={poster.alt} width="218" height="327" />
               </div>
 
               <div className="movie-card__desc">
                 <nav className="movie-nav movie-card__nav">
                   <ul className="movie-nav__list">
-                    <li className="movie-nav__item">
+                    <li className="movie-nav__item movie-nav__item--active">
                       <a href="#" className="movie-nav__link">Overview</a>
                     </li>
-                    <li className="movie-nav__item movie-nav__item--active">
+                    <li className="movie-nav__item">
                       <a href="#" className="movie-nav__link">Details</a>
                     </li>
                     <li className="movie-nav__item">
@@ -81,45 +118,37 @@ class CardMovieDetails extends PureComponent {
                   </ul>
                 </nav>
 
-                <div className="movie-card__text movie-card__row">
-                  <div className="movie-card__text-col">
-                    <p className="movie-card__details-item">
-                      <strong className="movie-card__details-name">Director</strong>
-                      <span className="movie-card__details-value">Wes Andreson</span>
-                    </p>
-                    <p className="movie-card__details-item">
-                      <strong className="movie-card__details-name">Starring</strong>
-                      <span className="movie-card__details-value">
-                        Bill Murray, <br/>
-                        Edward Norton, <br/>
-                        Jude Law, <br/>
-                        Willem Dafoe, <br/>
-                        Saoirse Ronan, <br/>
-                        Tony Revoloru, <br/>
-                        Tilda Swinton, <br/>
-                        Tom Wilkinson, <br/>
-                        Owen Wilkinson, <br/>
-                        Adrien Brody, <br/>
-                        Ralph Fiennes, <br/>
-                        Jeff Goldblum
-                      </span>
-                    </p>
-                  </div>
+                <div className="movie-rating">
+                  <div className="movie-rating__score">{rating.score}</div>
+                  <p className="movie-rating__meta">
+                    <span className="movie-rating__level">{
+                      `${this._checkRatingScore(rating.score)}`
+                    }</span>
+                    <span className="movie-rating__count">{`${rating.count <= 0 ? `no count` : `${rating.count} counts`}`}</span>
+                  </p>
+                </div>
 
-                  <div className="movie-card__text-col">
-                    <p className="movie-card__details-item">
-                      <strong className="movie-card__details-name">Run Time</strong>
-                      <span className="movie-card__details-value">1h 39m</span>
-                    </p>
-                    <p className="movie-card__details-item">
-                      <strong className="movie-card__details-name">Genre</strong>
-                      <span className="movie-card__details-value">Comedy</span>
-                    </p>
-                    <p className="movie-card__details-item">
-                      <strong className="movie-card__details-name">Released</strong>
-                      <span className="movie-card__details-value">2014</span>
-                    </p>
-                  </div>
+                <div className="movie-card__text">
+
+                  {descriptions.map((text, index) => {
+                    return (
+                      <p key={`text-${index}`}>
+                        {text}
+                      </p>
+                    );
+                  })}
+
+                  <p className="movie-card__director">
+                    <strong>
+                      Director: {directors.map((director) => director).join(`, `)}
+                    </strong>
+                  </p>
+
+                  <p className="movie-card__starring">
+                    <strong>
+                      Starring: {newStarrings.length > 5 ? `${newStarrings} and more` : newStarrings}
+                    </strong>
+                  </p>
                 </div>
               </div>
             </div>

@@ -12,14 +12,14 @@ class ListMovies extends PureComponent {
   }
 
   render() {
-    const {movies, titleMovieClickHandler} = this.props;
+    const {movies, onClick} = this.props;
     return (
       <div className="catalog__movies-list">
         {movies.map((movie, index) => (
           <CardMovie
             key={`${movie.title}-${index}`}
             movie={movie}
-            titleMovieClickHandler={titleMovieClickHandler}
+            onClick={onClick}
             cardMovieHoverHandler={() => {
               this.setState(() => ({
                 activeMovieCard: movie,
@@ -35,7 +35,7 @@ class ListMovies extends PureComponent {
 
 ListMovies.propTypes = {
   movies: PropTypes.array.isRequired,
-  titleMovieClickHandler: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ListMovies;

@@ -9,21 +9,45 @@ import CardMovieDetails from "../movie-page-details/movie-page-details.jsx";
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedCardMovie: null,
+    };
   }
 
   _renderApp() {
     const {promo, movies} = this.props;
+    const {selectedCardMovie} = this.state;
 
-    return (
-      <Main
-        promo={promo}
-        movies={movies}
-        titleMovieClickHandler={() => {}}
-      />
-    );
+    if (selectedCardMovie === null) {
+      return (
+        <Main
+          promo={promo}
+          movies={movies}
+          onClick={(selectedMovie) => {
+            this.setState({
+              selectedCardMovie: selectedMovie
+            });
+          }}
+        />
+      );
+    }
+
+    if (selectedCardMovie !== null) {
+      return (
+        <CardMovieDetails
+          movie={selectedCardMovie}
+          onClick = {() => {}}
+        />
+      );
+    }
+
+    return null;
   }
 
   render() {
+    const {movies} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -33,7 +57,10 @@ class App extends PureComponent {
           </Route>
 
           <Route exact path="/movie-page-details">
-            <CardMovieDetails/>
+            <CardMovieDetails
+              movie={movies[0]}
+              onClick = {() => {}}
+            />
           </Route>
 
         </Switch>
