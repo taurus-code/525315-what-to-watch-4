@@ -7,25 +7,30 @@ class ListMovies extends PureComponent {
     super(props);
 
     this.state = {
-      answers: [false, false, false, false, false, false, false, false],
+      activeMovieCard: null,
     };
   }
 
   render() {
-    const {movies} = this.props;
-
+    const {movies, titleMovieClickHandler} = this.props;
     return (
       <div className="catalog__movies-list">
         {movies.map((movie, index) => (
           <CardMovie
             key={`${movie.title}-${index}`}
-            movies={movies}
-            titleMovieClickHandler={() => {}}
+            movie={movie}
+            titleMovieClickHandler={titleMovieClickHandler}
+            cardMovieHoverHandler={() => {
+              this.setState(() => ({
+                activeMovieCard: movie,
+              }));
+            }}
           />
         ))}
       </div>
     );
   }
+
 }
 
 ListMovies.propTypes = {

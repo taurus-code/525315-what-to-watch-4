@@ -1,12 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
-
-const dataPromo = {
-  title: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  releaseDate: `2014`
-};
+import ListMovies from "./movie-list.jsx";
 
 const movies = [
   {
@@ -27,13 +21,12 @@ const movies = [
   },
 ];
 
-describe(`Renders app components`, () => {
-  it(`Render App component`, () => {
+describe(`Render ListCards Components`, () => {
+  it(`Should ListCards Component`, () => {
     const tree = renderer.create(
-        <App
-          promo = {dataPromo}
-          movies = {movies}
-          titleMovieClickHandler = {() => {}}
+        <ListMovies
+          movies={movies}
+          titleMovieClickHandler={() => {}}
         />
     ).toJSON();
 

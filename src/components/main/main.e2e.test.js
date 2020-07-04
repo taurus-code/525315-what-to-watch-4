@@ -13,8 +13,25 @@ const dataPromo = {
   releaseDate: `2014`
 };
 
-const titleMovies = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`];
 
+const movies = [
+  {
+    title: `Пираты карбинского моря`,
+    poster: {
+      src: `img/johnny-english.jpg`,
+      alt: `Пираты карбинского моря`,
+    },
+    addressPage: `movie-page.html`,
+  },
+  {
+    title: `Преступление Гринлевальда`,
+    poster: {
+      src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+      alt: `Преступление Гринлевальда`,
+    },
+    addressPage: `movie-page.html`,
+  },
+];
 
 describe(`Test components Main`, () => {
   it(`Should titleMovie Main pressed`, () => {
@@ -23,7 +40,7 @@ describe(`Test components Main`, () => {
     const main = mount(
         <Main
           promo={dataPromo}
-          titleMovies={titleMovies}
+          movies={movies}
           titleMovieClickHandler={titleMovieClickHandler}
         />
     );
