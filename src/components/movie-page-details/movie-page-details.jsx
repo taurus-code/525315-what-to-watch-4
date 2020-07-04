@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 class CardMovieDetails extends PureComponent {
   constructor(props) {
@@ -40,7 +40,7 @@ class CardMovieDetails extends PureComponent {
 
   render() {
     const {movie} = this.props;
-    const {background, title, genre, year, rating, descriptions, directors, starrings, poster, addressPage} = movie;
+    const {background, title, genre, year, rating, descriptions, directors, starrings, poster} = movie;
 
     const newStarrings = starrings.slice(0, 6).join(`, `);
 
@@ -220,3 +220,32 @@ class CardMovieDetails extends PureComponent {
 
 
 export default CardMovieDetails;
+
+CardMovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    background: PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    }).isRequired,
+
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    year: PropTypes.string.isRequired,
+
+    rating: PropTypes.shape({
+      score: PropTypes.number.isRequired,
+      count: PropTypes.number.isRequired,
+    }).isRequired,
+
+    descriptions: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+
+    directors: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+    starrings: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+
+    poster: PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    }).isRequired,
+
+  }).isRequired,
+};

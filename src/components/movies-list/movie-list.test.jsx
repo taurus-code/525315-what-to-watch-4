@@ -26,7 +26,7 @@ describe(`Render ListCards Components`, () => {
     const tree = renderer.create(
         <ListMovies
           movies={movies}
-          titleMovieClickHandler={() => {}}
+          onClick={() => {}}
         />
     ).toJSON();
 

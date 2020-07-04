@@ -19,7 +19,7 @@ describe(`Render CardMovieComponent`, () => {
     const tree = renderer.create(
         <CardMovie
           movie={movieCard}
-          titleMovieClickHandler={() => {}}
+          onClick={() => {}}
           cardMovieHoverHandler={() => {}}
         />
     ).toJSON();

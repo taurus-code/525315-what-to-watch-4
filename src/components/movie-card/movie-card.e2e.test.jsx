@@ -20,13 +20,13 @@ const movieCard = {
 
 describe(`test component Movie Card`, () => {
   it(`Should active Movie card`, () => {
-    const titleMovieClickHandler = jest.fn();
+    const onClick = jest.fn();
     const cardMovieHoverHandler = jest.fn((...args) => [...args]);
 
     const movie = shallow(
         <CardMovie
           movie={movieCard}
-          titleMovieClickHandler={titleMovieClickHandler}
+          onClick={onClick}
           cardMovieHoverHandler={cardMovieHoverHandler}
         />
     );

@@ -6,15 +6,12 @@ const CardMovie = (props) => {
   const {title, poster, addressPage} = movie;
   const {src, alt} = poster;
 
-  const cardMovieClickHandler = (evt) => {
-    evt.preventDefault();
-    onClick(movie);
-  };
-
   return (
     <article className="small-movie-card catalog__movies-card"
       onMouseEnter={cardMovieHoverHandler}
-      onClick={cardMovieClickHandler}
+      onClick={() => {
+        onClick(movie);
+      }}
     >
       <div className="small-movie-card__image">
         <img
@@ -28,7 +25,11 @@ const CardMovie = (props) => {
         <a
           className="small-movie-card__link"
           href={addressPage}
-          onClick={cardMovieClickHandler}>
+          onClick={(evt) => {
+            evt.preventDefault();
+            evt.stopPropagation();
+            onClick(movie);
+          }}>
           {title}
         </a>
       </h3>

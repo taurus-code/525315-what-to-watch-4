@@ -34,7 +34,7 @@ describe(`Renders Main components`, () => {
         <Main
           promo={dataPromo}
           movies={movies}
-          titleMovieClickHandler={() => {}}
+          onClick={() => {}}
         />
     ).toJSON;
 
