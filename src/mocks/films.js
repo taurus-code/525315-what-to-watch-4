@@ -21,7 +21,7 @@ export default [
       src: `img/no-country-for-old-men.jpg`,
       alt: `Нет страны для старого человека`,
     },
-    addressPage: `movie-page.html`,
+    addressPage: `movie-page-in-list.html`,
   },
   {
     title: `Отель Гранд Будапешт`,
@@ -29,7 +29,7 @@ export default [
       src: `img/the-grand-budapest-hotel-poster.jpg`,
       alt: `Отель Гранд Будапешт`,
     },
-    addressPage: `movie-page.html`,
+    addressPage: `movie-page-in-list.html`,
   },
   {
     title: `Нам надо поговорить о Кевине`,
@@ -37,7 +37,7 @@ export default [
       src: `img/we-need-to-talk-about-kevin.jpg`,
       alt: `Нам надо поговорить о Кевине`,
     },
-    addressPage: `movie-page.html`,
+    addressPage: `movie-page-in-list.html`,
   },
   {
     title: `Пираты карбинского моря`,
@@ -45,7 +45,7 @@ export default [
       src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
       alt: `Пираты карбинского моря`,
     },
-    addressPage: `movie-page.html`,
+    addressPage: `movie-page-in-list.html`,
   },
   {
     title: `Пираты карбинского моря`,
@@ -53,7 +53,7 @@ export default [
       src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
       alt: `Пираты карбинского моря`,
     },
-    addressPage: `movie-page.html`,
+    addressPage: `movie-page-in-list.html`,
   },
   {
     title: `Пираты карбинского моря`,
@@ -61,6 +61,6 @@ export default [
       src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
       alt: `Пираты карбинского моря`,
     },
-    addressPage: `movie-page.html`,
+    addressPage: `movie-page-in-list.html`,
   },
 ];
