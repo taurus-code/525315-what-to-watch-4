@@ -28,8 +28,6 @@ class App extends PureComponent {
             this.setState({
               selectedCardMovie: selectedMovie
             });
-
-            console.log(this.state.selectedCardMovie);
           }}
         />
       );

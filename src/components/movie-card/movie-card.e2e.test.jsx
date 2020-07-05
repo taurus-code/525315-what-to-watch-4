@@ -33,7 +33,18 @@ describe(`test component Movie Card`, () => {
 
     movie.simulate(`mouseenter`, {preventDefault() {}});
 
+    const titleMovie = movie.find(`a.small-movie-card__link`);
+    titleMovie.simulate(`click`, {
+      preventDefault: () => {
+      },
+      stopPropagation: () => {
+      },
+    });
+
+    expect(onClick).toHaveBeenCalledTimes(1);
+
     expect(cardMovieHoverHandler).toHaveBeenCalledTimes(1);
     expect(cardMovieHoverHandler.mock.calls[0][0]).toMatchObject(movie);
   });
 });
+
