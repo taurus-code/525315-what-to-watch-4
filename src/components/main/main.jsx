@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ListMovies from "../movies-list/movie-list.jsx";
 
 const Main = (props) => {
-  const {promo, titleMovies, titleMovieClickHandler} = props;
+  const {promo, movies, titleMovieClickHandler} = props;
 
   return (
     <React.Fragment>
@@ -131,23 +132,10 @@ const Main = (props) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {titleMovies.map((titleMovie, index) => (
-              <article key={titleMovie + index} className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a
-                    className="small-movie-card__link"
-                    href="movie-page.html"
-                    onClick={titleMovieClickHandler}>
-                    {titleMovie}
-                  </a>
-                </h3>
-              </article>
-            ))}
-          </div>
+          <ListMovies
+            movies={movies}
+            titleMovieClickHandler={titleMovieClickHandler}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -178,9 +166,7 @@ Main.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
   }).isRequired,
-  titleMovies: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
+  movies: PropTypes.array.isRequired,
   titleMovieClickHandler: PropTypes.func.isRequired,
 };
 

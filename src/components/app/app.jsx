@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 const titleMovieClickHandler = () => {};
 
 const App = (props) => {
-  const {promo, titleMovies} = props;
+  const {promo, movies} = props;
   return (
     <Main
       promo={promo}
-      titleMovies = {titleMovies}
-      titleMovieClickHandler = {titleMovieClickHandler}
+      movies={movies}
+      titleMovieClickHandler={titleMovieClickHandler}
     />
   );
 };
@@ -21,10 +21,7 @@ App.propTypes = {
     genre: PropTypes.string.isRequired,
     releaseDate: PropTypes.string.isRequired,
   }).isRequired,
-  titleMovies: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
-  titleMovieClickHandler: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
 };
 
 export default App;
