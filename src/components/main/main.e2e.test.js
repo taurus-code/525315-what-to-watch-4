@@ -35,13 +35,13 @@ const movies = [
 
 describe(`Test components Main`, () => {
   it(`Should titleMovie Main pressed`, () => {
-    const titleMovieClickHandler = jest.fn();
+    const onClick = jest.fn();
 
     const main = mount(
         <Main
           promo={dataPromo}
           movies={movies}
-          titleMovieClickHandler={titleMovieClickHandler}
+          onClick={onClick}
         />
     );
 
@@ -49,6 +49,6 @@ describe(`Test components Main`, () => {
 
     titleLink.simulate(`click`, {preventDefault() {}});
 
-    expect(titleMovieClickHandler).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 });

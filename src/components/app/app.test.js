@@ -10,18 +10,38 @@ const dataPromo = {
 
 const movies = [
   {
-    title: `Пираты карбинского моря`,
-    poster: {
-      src: `img/johnny-english.jpg`,
+    background: {
+      src: `img/pirats.jpg`,
       alt: `Пираты карбинского моря`,
     },
-    addressPage: `movie-page.html`,
-  },
-  {
-    title: `Преступление Гринлевальда`,
+    title: `Пираты карбинского моря`,
+    genre: `Fantastic`,
+    year: `1996`,
+    rating: {
+      score: 9.9,
+      count: 10,
+    },
+    descriptions: [
+      `In the 1970s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
+      `Gustave prides himself on providing first-className service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
+    ],
+    directors: [
+      `Sas`,
+      `Kek`,
+      `Sas`,
+      `Kek`,
+      `Sas`,
+      `Kek`
+    ],
+    starrings: [
+      `Bill Murray`,
+      `Edward Norton`,
+      `Jude Law`,
+      `Willem Dafoe`
+    ],
     poster: {
-      src: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-      alt: `Преступление Гринлевальда`,
+      src: `img/poster-pirates.jpg`,
+      alt: `Пираты карбинского моря`,
     },
     addressPage: `movie-page.html`,
   },
@@ -33,7 +53,7 @@ describe(`Renders app components`, () => {
         <App
           promo = {dataPromo}
           movies = {movies}
-          titleMovieClickHandler = {() => {}}
+          onClick = {() => {}}
         />
     ).toJSON();
 
